@@ -2,21 +2,29 @@ import React, { useState } from 'react';
 import Cart from './Cart';
 import Hamburger from './Hamburger';
 import SideNav from './SideNav';
+import CartWindow from './CartWindow';
 import logo from './../images/logo.svg';
 import avatar from './../images/image-avatar.png';
 
 const Header = () => {
-    const [open, setOpen] = useState(false);
+    const [navOpen, setNavOpen] = useState(false);
+    const [cartOpen, setCartOpen] = useState(false);
+
     const toggleNav = () => {
         console.log("toggle nav")
-        setOpen(!open)
+        setNavOpen(!navOpen)
+    }
+
+    const toggleCart = () => {
+        console.log("toggle cart")
+        setCartOpen(!cartOpen)
     }
 
     return (
         <div id="header">
-            <Hamburger hamburgerMenu={<SideNav openState={open} closeNav={toggleNav} />} toggleNav={toggleNav} />
+            <Hamburger hamburgerMenu={<SideNav openState={navOpen} closeNav={toggleNav} />} toggleNav={toggleNav} />
             <img id="logo" role="img" src={logo} alt="Sneakers Logo" />
-            <Cart />
+            <Cart cartWindow={<CartWindow />} toggleCart={toggleCart} />
             <img id="avatar" role="img" src={avatar} alt="Avatar" />
         </div>
     );

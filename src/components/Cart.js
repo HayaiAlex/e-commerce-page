@@ -1,10 +1,11 @@
 import React from 'react';
 import cartIcon from './../images/icon-cart.svg';
 
-const Cart = () => {
+const Cart = ({ cartWindow, toggleCart }) => {
     return (
         <>
-            <img id="cart" role="img" src={cartIcon} alt="Shopping Cart Icon" />
+            <img onClick={toggleCart} id="cart" role="img" src={cartIcon} alt="Shopping Cart Icon" />
+            {cartWindow}
         </>
     );
 };
