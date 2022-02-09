@@ -19,13 +19,39 @@ function App() {
     },
     {
       key: "b",
-      name: "Fall Limited Edition Sneakers",
-      price: "250",
+      name: "Autumn Limited Edition Sneakers",
+      price: "200",
       discount: "0.5",
       img: Thumbnail,
       quantity: "2"
     },
   ]);
+  const [count, setCount] = useState(0);
+
+  const addItem = () => {
+    console.log(cartData)
+    let foundExistingItem = false;
+    let newData = cartData.map(item => {
+      console.log(item)
+      if (item.key === "c") {
+        item.quantity = Number(item.quantity) + count;
+        foundExistingItem = true;
+      }
+      return item;
+    })
+    if (foundExistingItem == false) {
+      newData.push({
+        key: "c",
+        name: "New Limited Edition Sneakers",
+        price: "200",
+        discount: "0.5",
+        img: Thumbnail,
+        quantity: count
+      })
+    }
+
+    setCartData(newData);
+  }
 
   const removeItem = (e) => {
     const key = e.target.parentNode.getAttribute("data-key");
@@ -34,6 +60,10 @@ function App() {
     });
     console.log(newCart)
     setCartData(newCart);
+  }
+
+  const modifyCount = (num) => (e) => {
+    if (count + num >= 0) setCount(count + num);
   }
 
   return (
@@ -52,8 +82,8 @@ function App() {
           discount="0.5"
         />
 
-        <ItemCounter />
-        <AddToCart />
+        <ItemCounter modifyCount={modifyCount} count={count} />
+        <AddToCart addItem={addItem} />
 
       </div>
 
