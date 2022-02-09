@@ -1,0 +1,26 @@
+[
+    {
+        "id": "1",
+        "name": "Fall Limited Edition Sneakers",
+        "price": "250",
+        "discount": "0.5",
+        "img": "Thumbnail",
+        "quantity": "2"
+    },
+    {
+        "id": "2",
+        "name": "Winter Limited Edition Sneakers",
+        "price": "200",
+        "discount": "0.5",
+        "img": "Thumbnail",
+        "quantity": "1"
+    },
+    {
+        "id": "3",
+        "name": "Summer Edition Sneakers",
+        "price": "300",
+        "discount": "0.5",
+        "img": "Thumbnail",
+        "quantity": "3"
+    }
+]

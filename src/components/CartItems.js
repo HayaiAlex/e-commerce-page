@@ -1,4 +1,5 @@
 import React from 'react';
+import Thumbnail from './../images/image-product-1-thumbnail.jpg';
 import DeleteButton from './DeleteButton.js'
 
 const CartItems = ({ cartData, removeItem }) => {
@@ -10,8 +11,8 @@ const CartItems = ({ cartData, removeItem }) => {
     return (
         <div id='cart-items-container' className='flex-col'>
             {cartData.map(item => (
-                <div className='cart-item flex' data-key={item.key}>
-                    <img className='item-img' role="img" src={item.img} alt="Image of shoes" />
+                <div className='cart-item flex' data-id={item.id}>
+                    <img className='item-img' role="img" src={Thumbnail} alt="Image of shoes" />
                     <div className="item-info flex-col">
                         <p className='item-name'>{item.name}</p>
                         <div className='item-cost flex'>

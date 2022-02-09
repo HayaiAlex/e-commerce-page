@@ -6,34 +6,19 @@ import ProductImage from './components/ProductImage';
 import ItemCounter from './components/ItemCounter';
 import AddToCart from './components/AddToCart';
 import Thumbnail from './images/image-product-1-thumbnail.jpg'
+import cartJsonData from './cartData';
 
 function App() {
-  const [cartData, setCartData] = useState([
-    {
-      key: "a",
-      name: "Fall Limited Edition Sneakers",
-      price: "250",
-      discount: "0.5",
-      img: Thumbnail,
-      quantity: "2"
-    },
-    {
-      key: "b",
-      name: "Autumn Limited Edition Sneakers",
-      price: "200",
-      discount: "0.5",
-      img: Thumbnail,
-      quantity: "2"
-    },
-  ]);
+  const [cartData, setCartData] = useState(cartJsonData);
   const [count, setCount] = useState(0);
+
 
   const addItem = () => {
     console.log(cartData)
     let foundExistingItem = false;
     let newData = cartData.map(item => {
       console.log(item)
-      if (item.key === "c") {
+      if (item.id === "1") {
         item.quantity = Number(item.quantity) + count;
         foundExistingItem = true;
       }
@@ -41,7 +26,7 @@ function App() {
     })
     if (foundExistingItem == false) {
       newData.push({
-        key: "c",
+        key: "4",
         name: "New Limited Edition Sneakers",
         price: "200",
         discount: "0.5",
@@ -54,11 +39,10 @@ function App() {
   }
 
   const removeItem = (e) => {
-    const key = e.target.parentNode.getAttribute("data-key");
+    const id = e.target.parentNode.getAttribute("data-id");
     const newCart = cartData.filter((item) => {
-      return item.key !== key
+      return item.id !== id
     });
-    console.log(newCart)
     setCartData(newCart);
   }
 
@@ -76,6 +60,7 @@ function App() {
 
         <h1 id='title'>Sneaker Company</h1>
         <Product
+          id="1"
           name="Fall Limited Edition Sneakers"
           description="These low-profile sneakers are your perfect casual wear companion. Featuring a durable rubber outer sole, they'll withstand everything the weather can offer."
           price="250"
