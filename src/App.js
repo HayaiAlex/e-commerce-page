@@ -27,10 +27,19 @@ function App() {
     },
   ]);
 
+  const removeItem = (e) => {
+    const key = e.target.parentNode.getAttribute("data-key");
+    const newCart = cartData.filter((item) => {
+      return item.key !== key
+    });
+    console.log(newCart)
+    setCartData(newCart);
+  }
+
   return (
     <div className="App">
 
-      <Header cartData={cartData} />
+      <Header cartData={cartData} removeItem={removeItem} />
       <ProductImage />
 
       <div id="lower-container">

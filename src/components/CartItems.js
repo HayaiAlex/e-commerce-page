@@ -1,17 +1,16 @@
 import React from 'react';
-import Bin from './../images/icon-delete.svg';
+import DeleteButton from './DeleteButton.js'
 
-const CartItems = ({ cartData }) => {
+const CartItems = ({ cartData, removeItem }) => {
     const formatPrice = (price) => {
         const num = Number(price);
         return num.toLocaleString('en-GB', { style: 'currency', currency: 'GBP' });
     }
 
-
     return (
         <div id='cart-items-container' className='flex-col'>
             {cartData.map(item => (
-                <div className='cart-item flex'>
+                <div className='cart-item flex' data-key={item.key}>
                     <img className='item-img' role="img" src={item.img} alt="Image of shoes" />
                     <div className="item-info flex-col">
                         <p className='item-name'>{item.name}</p>
@@ -20,7 +19,7 @@ const CartItems = ({ cartData }) => {
                             <p className='item-cost-total'>{formatPrice(item.price * item.quantity)}</p>
                         </div>
                     </div>
-                    <img role="button" className='item-bin' src={Bin} alt="Click to delete item" />
+                    <DeleteButton removeItem={removeItem} />
                 </div>
             ))}
         </div>

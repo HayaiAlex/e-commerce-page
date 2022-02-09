@@ -1,13 +1,12 @@
 import React from 'react';
 import CartItems from './CartItems.js';
 
-const CartWindow = ({ openState, cartData }) => {
+const CartWindow = ({ openState, cartData, removeItem }) => {
     let content = ''
-    console.log(cartData)
     if (cartData.length > 0) {
         content =
             <div id='cart-content-container'>
-                <CartItems cartData={cartData} />
+                <CartItems cartData={cartData} removeItem={removeItem} />
                 <p id='checkout' className='orange-button'>Checkout</p>
             </div>
     } else {
