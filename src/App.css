@@ -24,13 +24,17 @@
   display: flex;
 }
 
+.flex-col {
+  display: flex;
+  flex-direction: column;
+}
+
 .orange-button {
   text-align: center;
-  padding: 1rem 1.5rem;
+  padding: 0.9rem 1.5rem;
   background: var(--orange);
   border-radius: 0.5rem;
   color: var(--white);
-  height: 3rem;
 }
 
 #header {
@@ -58,7 +62,7 @@
   padding:1.5rem;
   background: var(--white);
   width: 70%;
-  z-index: 1;
+  z-index: 2;
   transition: all 200ms ease-in-out;
 }
 
@@ -93,11 +97,22 @@
 
 #cart-window {
   position: absolute;
-  inset: 60px 0;
+  top: 60px;
   z-index: 1;
   background: var(--white);
-  border-radius: 1rem;
-  margin: 10px;
+  border-radius: 0.5rem;
+  margin-top: 3vw;
+  margin-left: 3vw;
+  width: 94vw;
+  transition: left 200ms ease-in-out;
+}
+
+.cart-open {
+  left: 0px;
+}
+
+.cart-closed {
+  left: -100vw;
 }
 
 #cart-window .top,
@@ -106,14 +121,82 @@
 }
 
 #cart-window .bottom {
+  display: flex;
+  flex-direction: column;
+  min-height: 10rem;
+  justify-content: center;
+  align-items: center;
   border-top: 1px solid var(--light-grayish-blue);
 }
 
-#cart-window .bottom p {
-
+#cart-window #cart-title {
+  font-weight: 700;
+  font-size: 1rem;
+  color: var(--very-dark-blue);
 }
 
+#cart-window.bottom.cart-empty {
+  color: var(--dark-grayish-blue);
+  font-weight: 700;
+  font-size: 0.9rem;
+}
 
+#cart-content-container {
+  width: 100%;
+}
+
+#cart-items-container {
+  width: 100%;
+  gap:1rem;
+}
+
+.cart-item {
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+}
+
+.item-img {
+  justify-self: flex-start;
+  width: 20%;
+  border-radius: 10%;
+}
+
+.item-info {
+  justify-content: center;
+  gap: 0.4rem;
+  width: 60%;
+}
+
+.item-name {
+  color: var(--dark-grayish-blue);
+  font-weight: 600;
+  width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.item-cost-single {
+  color: var(--dark-grayish-blue);
+  font-weight: 600;
+}
+
+.item-cost-total {
+  margin-left: 0.5rem;
+  color: var(--very-dark-blue);
+  font-weight: 700;
+}
+
+.item-bin {
+  height: 1rem;
+  margin-left: auto;
+}
+
+#checkout {
+  margin-top: 1rem;
+}
 
 #product-image-container {
   position: relative;
@@ -229,6 +312,8 @@
   gap: 1rem;
   box-shadow: 0 2rem 2.5rem -1.1rem var(--orange);
   margin-bottom: 4rem;
+  background: var(--orange);
+  border-radius: 0.5rem;
 }
 
 #add-container p {

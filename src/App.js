@@ -1,14 +1,36 @@
 import './App.css';
+import { useState } from 'react';
 import Header from './components/Header';
 import Product from './components/Product';
 import ProductImage from './components/ProductImage';
 import ItemCounter from './components/ItemCounter';
 import AddToCart from './components/AddToCart';
+import Thumbnail from './images/image-product-1-thumbnail.jpg'
 
 function App() {
+  const [cartData, setCartData] = useState([
+    {
+      key: "a",
+      name: "Fall Limited Edition Sneakers",
+      price: "250",
+      discount: "0.5",
+      img: Thumbnail,
+      quantity: "2"
+    },
+    {
+      key: "b",
+      name: "Fall Limited Edition Sneakers",
+      price: "250",
+      discount: "0.5",
+      img: Thumbnail,
+      quantity: "2"
+    },
+  ]);
+
   return (
     <div className="App">
-      <Header />
+
+      <Header cartData={cartData} />
       <ProductImage />
 
       <div id="lower-container">

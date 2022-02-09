@@ -6,7 +6,7 @@ import CartWindow from './CartWindow';
 import logo from './../images/logo.svg';
 import avatar from './../images/image-avatar.png';
 
-const Header = () => {
+const Header = ({ cartData }) => {
     const [navOpen, setNavOpen] = useState(false);
     const [cartOpen, setCartOpen] = useState(false);
 
@@ -24,7 +24,7 @@ const Header = () => {
         <div id="header">
             <Hamburger hamburgerMenu={<SideNav openState={navOpen} closeNav={toggleNav} />} toggleNav={toggleNav} />
             <img id="logo" role="img" src={logo} alt="Sneakers Logo" />
-            <Cart cartWindow={<CartWindow />} toggleCart={toggleCart} />
+            <Cart cartWindow={<CartWindow openState={cartOpen} cartData={cartData} />} toggleCart={toggleCart} />
             <img id="avatar" role="img" src={avatar} alt="Avatar" />
         </div>
     );
