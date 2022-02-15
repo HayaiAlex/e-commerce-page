@@ -22,10 +22,32 @@ const ProductImage = () => {
         setActiveImg(eval('img' + img));
     }
 
+    const [tapePosition, setTapePosition] = useState(0)
+    const slide = direction => () => {
+        console.log("slide", direction, tapePosition)
+        let maxImages = 4
+        if (direction === "left") {
+            tapePosition <= 1 ? setTapePosition(String(maxImages)) : setTapePosition(Number(tapePosition) - 1);
+        } else if (direction === "right") {
+            tapePosition >= maxImages ? setTapePosition("1") : setTapePosition(Number(tapePosition) + 1);
+        }
+    }
+
     return (
         <div id="product-image-container">
-            <img id="previous-button" role="button" src={PreviousIcon} alt="Previous Button" />
-            <img id="next-button" role="button" src={NextIcon} alt="Next Button" />
+
+            {/* For mobile have buttons slide between images */}
+            <img onClick={slide("left")} id="previous-button" role="button" src={PreviousIcon} alt="Previous Button" />
+            <img onClick={slide("right")} id="next-button" role="button" src={NextIcon} alt="Next Button" />
+
+            <div className={'product-image-tape-position-' + tapePosition} id="product-image-tape">
+                <img role="img" src={activeImg} alt="Image of shoes" className="product-image-mobile" />
+                <img role="img" src={activeImg} alt="Image of shoes" className="product-image-mobile" />
+                <img role="img" src={activeImg} alt="Image of shoes" className="product-image-mobile" />
+                <img role="img" src={activeImg} alt="Image of shoes" className="product-image-mobile" />
+            </div>
+
+            {/* For desktop, use thumbnails under main image */}
             <img id="product-image" role="img" src={activeImg} alt="Image of shoes" />
 
             <div id="product-image-thumbnail-container">

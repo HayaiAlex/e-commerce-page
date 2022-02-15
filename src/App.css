@@ -204,6 +204,7 @@
 
 #product-image-container {
   position: relative;
+  overflow: hidden;
   width: 100%;
   aspect-ratio: 1;
   /* background-color: rgb(236, 116, 18); */
@@ -213,8 +214,36 @@
   display: none;
 }
 
+/* desktop */
 #product-image {
-  width: 100%;
+  display: none;
+}
+
+#product-image-tape {
+  position: relative;
+  display: flex;
+  width: 400vw;
+  overflow: hidden;
+  left: auto;
+  transition: right 800ms ease-out;
+}
+
+.product-image-tape-position-1 {
+  right: 0;
+}
+.product-image-tape-position-2 {
+  right: 100vw;
+}
+.product-image-tape-position-3 {
+  right: 200vw;
+}
+.product-image-tape-position-4 {
+  right: 300vw;
+}
+
+.product-image-mobile {
+  width: 100vw;
+  height: 100vw;
 }
 
 #previous-button,
@@ -228,6 +257,7 @@
   position: absolute;
   top: 50%;
   transform: translate(40%, -50%);
+  z-index: 1;
 }
 
 #next-button {
