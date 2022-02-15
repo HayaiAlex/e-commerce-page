@@ -14,13 +14,15 @@ const CartWindow = ({ openState, cartData, removeItem }) => {
     }
 
     return (
-        <div id="cart-window" className={openState ? "cart-open" : "cart-closed"}>
-            <div className="top">
-                <h3 id="cart-title">Cart</h3>
+        <div id="cart-window-container">
+            <div id="cart-window" className={openState ? "cart-open" : "cart-closed"}>
+                <div className="top">
+                    <h3 id="cart-title">Cart</h3>
+                </div>
+                <div className="bottom">
+                    {content}
+                </div >
             </div>
-            <div className="bottom">
-                {content}
-            </div >
         </div>
     );
 };

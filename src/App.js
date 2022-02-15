@@ -1,17 +1,21 @@
 import './App.css';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Header from './components/Header';
 import Product from './components/Product';
 import ProductImage from './components/ProductImage';
 import ItemCounter from './components/ItemCounter';
 import AddToCart from './components/AddToCart';
 import Thumbnail from './images/image-product-1-thumbnail.jpg'
-import cartJsonData from './cartData';
 
 function App() {
-  const [cartData, setCartData] = useState(cartJsonData);
+  const [cartData, setCartData] = useState([]);
   const [count, setCount] = useState(0);
 
+  useEffect(() => {
+    fetch('http://localhost:3001/cart')
+      .then(res => res.json())
+      .then(cart => setCartData(cart))
+  }, []);
 
   const addItem = () => {
     console.log(cartData)
@@ -26,7 +30,7 @@ function App() {
     })
     if (foundExistingItem == false) {
       newData.push({
-        key: "4",
+        id: "4",
         name: "New Limited Edition Sneakers",
         price: "200",
         discount: "0.5",
@@ -36,6 +40,7 @@ function App() {
     }
 
     setCartData(newData);
+    updateCartJson(newData);
   }
 
   const removeItem = (e) => {
@@ -44,6 +49,21 @@ function App() {
       return item.id !== id
     });
     setCartData(newCart);
+    updateCartJson(newCart);
+  }
+
+  async function updateCartJson(data) {
+    const results = await fetch('http://localhost:3001/cart',
+      {
+        method: 'POST',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+      });
+    const content = await results.json();
+    console.log(content);
   }
 
   const modifyCount = (num) => (e) => {
@@ -54,23 +74,29 @@ function App() {
     <div className="App">
 
       <Header cartData={cartData} removeItem={removeItem} />
-      <ProductImage />
 
-      <div id="lower-container">
+      <main id="main">
+        <ProductImage />
 
-        <h1 id='title'>Sneaker Company</h1>
-        <Product
-          id="1"
-          name="Fall Limited Edition Sneakers"
-          description="These low-profile sneakers are your perfect casual wear companion. Featuring a durable rubber outer sole, they'll withstand everything the weather can offer."
-          price="250"
-          discount="0.5"
-        />
+        <div id="lower-container">
 
-        <ItemCounter modifyCount={modifyCount} count={count} />
-        <AddToCart addItem={addItem} />
+          <h1 id='title'>Sneaker Company</h1>
+          <Product
+            id="1"
+            name="Fall Limited Edition Sneakers"
+            description="These low-profile sneakers are your perfect casual wear companion. Featuring a durable rubber outer sole, they'll withstand everything the weather can offer."
+            price="250"
+            discount="0.5"
+          />
 
-      </div>
+          <div className='flex' id='count-add-container'>
+            <ItemCounter modifyCount={modifyCount} count={count} />
+            <AddToCart addItem={addItem} />
+          </div>
+
+        </div>
+      </main>
+
 
     </div>
   );
