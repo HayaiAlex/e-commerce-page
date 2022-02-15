@@ -464,10 +464,12 @@
     position: relative;
     width: 100%;
     aspect-ratio: 1;
+    overflow: visible;
     /* background-color: rgb(236, 116, 18); */
   }
 
   #product-image {
+    display: block;
     width: 100%;
     border-radius: 1rem;
   }
@@ -475,6 +477,10 @@
   #previous-button,
   #next-button {
     display:none;
+  }
+
+  #product-image-tape {
+    display: none;
   }
 
   #product-image-thumbnail-container {
