@@ -380,7 +380,7 @@
 @media screen and (min-width:900px) {
   #header {
     border-bottom: 2px solid var(--light-grayish-blue);
-    margin: 5rem;
+    margin: 3rem;
     padding-bottom: 3rem;
     gap: 1.5rem;
   }
@@ -464,7 +464,7 @@
     display: grid;
     grid-template-columns: repeat(2,1fr);
     gap: min(7vw,6rem);
-    margin: 0 10vw;
+    margin: 0 10vw 100px 10vw;
     align-items: center;
   }
 
@@ -661,7 +661,7 @@
 
   #add-container {
     flex-basis: 60%;
-    justify-content: space-between;
+    justify-content: center;
   }
 
   #add-button-cart {
