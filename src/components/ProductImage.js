@@ -28,9 +28,9 @@ const ProductImage = () => {
         console.log("slide", direction, tapePosition)
         let maxImages = 4
         if (direction === "left") {
-            tapePosition <= 1 ? setTapePosition(String(maxImages)) : setTapePosition(Number(tapePosition) - 1);
+            tapePosition <= 1 ? setTapePosition(maxImages) : setTapePosition(Number(tapePosition) - 1);
         } else if (direction === "right") {
-            tapePosition >= maxImages ? setTapePosition("1") : setTapePosition(Number(tapePosition) + 1);
+            tapePosition >= maxImages ? setTapePosition(1) : setTapePosition(Number(tapePosition) + 1);
         }
     }
 
@@ -84,10 +84,22 @@ const ProductImage = () => {
                 </div>
 
                 <div id="product-image-thumbnail-container">
-                    <img onClick={setLightboxImage(1)} className={'product-image-thumbnail ' + (tapePosition === 1 ? 'active-thumbnail' : '')} src={Thumbnail1} alt="Shoe Thumbnail" />
-                    <img onClick={setLightboxImage(2)} className={'product-image-thumbnail ' + (tapePosition === 2 ? 'active-thumbnail' : '')} src={Thumbnail2} alt="Shoe Thumbnail" />
-                    <img onClick={setLightboxImage(3)} className={'product-image-thumbnail ' + (tapePosition === 3 ? 'active-thumbnail' : '')} src={Thumbnail3} alt="Shoe Thumbnail" />
-                    <img onClick={setLightboxImage(4)} className={'product-image-thumbnail ' + (tapePosition === 4 ? 'active-thumbnail' : '')} src={Thumbnail4} alt="Shoe Thumbnail" />
+                    <div onClick={setLightboxImage(1)} className='thumbnail-container'>
+                        <img className='product-image-thumbnail' src={Thumbnail1} alt="Shoe Thumbnail" />
+                        <div className={tapePosition === 1 ? 'thumbnail-overlay-active' : 'thumbnail-overlay'}></div>
+                    </div>
+                    <div onClick={setLightboxImage(2)} className='thumbnail-container'>
+                        <img className='product-image-thumbnail' src={Thumbnail2} alt="Shoe Thumbnail" />
+                        <div className={tapePosition === 2 ? 'thumbnail-overlay-active' : 'thumbnail-overlay'}></div>
+                    </div>
+                    <div onClick={setLightboxImage(3)} className='thumbnail-container'>
+                        <img className='product-image-thumbnail' src={Thumbnail3} alt="Shoe Thumbnail" />
+                        <div className={tapePosition === 3 ? 'thumbnail-overlay-active' : 'thumbnail-overlay'}></div>
+                    </div>
+                    <div onClick={setLightboxImage(4)} className='thumbnail-container'>
+                        <img className='product-image-thumbnail' src={Thumbnail4} alt="Shoe Thumbnail" />
+                        <div className={tapePosition === 4 ? 'thumbnail-overlay-active' : 'thumbnail-overlay'}></div>
+                    </div>
                 </div>
             </div>
         </div >
@@ -95,10 +107,3 @@ const ProductImage = () => {
 };
 
 export default ProductImage;
-
-// TODO:
-// make lightbox thumbnails not control main product image
-// make lightbox thumbnails control lightbox image
-// when arrows used in lightbox, they must change thumbnail highlight
-// check height so lightbox fills screen more on the bottom
-// add transition to lightbox-open
