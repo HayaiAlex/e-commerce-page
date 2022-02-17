@@ -19,9 +19,9 @@ const Header = ({ cartData, removeItem }) => {
     }
 
     return (
-        <div id="header">
+        <header id="header">
             <Hamburger hamburgerMenu={<SideNav openState={navOpen} closeNav={toggleNav} />} toggleNav={toggleNav} />
-            <img id="logo" role="img" src={logo} alt="Sneakers Logo" />
+            <img id="logo" src={logo} alt="Sneakers Logo" />
             <div id="desktop-nav">
                 <ul>
                     <li><a href="#">Collections</a></li>
@@ -32,8 +32,8 @@ const Header = ({ cartData, removeItem }) => {
                 </ul>
             </div>
             <Cart cartWindow={<CartWindow openState={cartOpen} cartData={cartData} removeItem={removeItem} />} toggleCart={toggleCart} />
-            <img id="avatar" role="img" src={avatar} alt="Avatar" />
-        </div>
+            <img id="avatar" src={avatar} alt="Avatar" />
+        </header>
     );
 };
 

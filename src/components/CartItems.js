@@ -12,7 +12,7 @@ const CartItems = ({ cartData, removeItem }) => {
         <div id='cart-items-container' className='flex-col'>
             {cartData.map(item => (
                 <div className='cart-item flex' data-id={item.id}>
-                    <img className='item-img' role="img" src={Thumbnail} alt="Image of shoes" />
+                    <img className='item-img' src={Thumbnail} alt="Image of shoes" />
                     <div className="item-info flex-col">
                         <p className='item-name'>{item.name}</p>
                         <div className='item-cost flex'>

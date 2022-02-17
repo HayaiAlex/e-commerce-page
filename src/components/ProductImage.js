@@ -47,20 +47,20 @@ const ProductImage = () => {
         <div id="product-image-container">
 
             {/* For mobile have buttons slide between images */}
-            <img onClick={slide("left")} id="previous-button" role="button" src={PreviousIcon} alt="Previous Button" />
-            <img onClick={slide("right")} id="next-button" role="button" src={NextIcon} alt="Next Button" />
+            <img onClick={slide("left")} className="previous-button" role="button" src={PreviousIcon} alt="Previous Button" />
+            <img onClick={slide("right")} className="next-button" role="button" src={NextIcon} alt="Next Button" />
 
             <div className={('product-image-tape-position-' + tapePosition) + " product-image-tape"}>
-                <img role="img" src={ProductImg1} alt="Image of shoes" className="product-image-mobile" />
-                <img role="img" src={ProductImg2} alt="Image of shoes" className="product-image-mobile" />
-                <img role="img" src={ProductImg3} alt="Image of shoes" className="product-image-mobile" />
-                <img role="img" src={ProductImg4} alt="Image of shoes" className="product-image-mobile" />
+                <img src={ProductImg1} alt="Image of shoes" className="product-image-mobile" />
+                <img src={ProductImg2} alt="Image of shoes" className="product-image-mobile" />
+                <img src={ProductImg3} alt="Image of shoes" className="product-image-mobile" />
+                <img src={ProductImg4} alt="Image of shoes" className="product-image-mobile" />
             </div>
 
             {/* For desktop, use thumbnails under main image */}
-            <img onClick={toggleLightbox} id="product-image" role="img" src={activeImg} alt="Image of shoes" />
+            <img onClick={toggleLightbox} id="product-image" src={activeImg} alt="Image of shoes" />
 
-            <div id="product-image-thumbnail-container">
+            <div className="product-image-thumbnail-container">
                 <img onClick={setImage(1)} className={'product-image-thumbnail ' + (activeImg === img1 ? 'active-thumbnail' : '')} src={Thumbnail1} alt="Shoe Thumbnail" />
                 <img onClick={setImage(2)} className={'product-image-thumbnail ' + (activeImg === img2 ? 'active-thumbnail' : '')} src={Thumbnail2} alt="Shoe Thumbnail" />
                 <img onClick={setImage(3)} className={'product-image-thumbnail ' + (activeImg === img3 ? 'active-thumbnail' : '')} src={Thumbnail3} alt="Shoe Thumbnail" />
@@ -71,19 +71,19 @@ const ProductImage = () => {
             <div className={"product-image-lightbox " + (lightboxOpen ? 'product-image-lightbox-open' : '')}>
                 <img onClick={toggleLightbox} role="button" className='close-button' src={CloseIcon} alt="Close Icon" />
 
-                <img onClick={slide("left")} id="previous-button" role="button" src={PreviousIcon} alt="Previous Button" />
-                <img onClick={slide("right")} id="next-button" role="button" src={NextIcon} alt="Next Button" />
+                <img onClick={slide("left")} className="previous-button" role="button" src={PreviousIcon} alt="Previous Button" />
+                <img onClick={slide("right")} className="next-button" role="button" src={NextIcon} alt="Next Button" />
 
                 <div className="overflow-hidden">
                     <div className={'product-image-tape product-image-tape-position-' + tapePosition}>
-                        <img role="img" src={ProductImg1} alt="Image of shoes" className="product-image-mobile" />
-                        <img role="img" src={ProductImg2} alt="Image of shoes" className="product-image-mobile" />
-                        <img role="img" src={ProductImg3} alt="Image of shoes" className="product-image-mobile" />
-                        <img role="img" src={ProductImg4} alt="Image of shoes" className="product-image-mobile" />
+                        <img src={ProductImg1} alt="Image of shoes" className="product-image-mobile" />
+                        <img src={ProductImg2} alt="Image of shoes" className="product-image-mobile" />
+                        <img src={ProductImg3} alt="Image of shoes" className="product-image-mobile" />
+                        <img src={ProductImg4} alt="Image of shoes" className="product-image-mobile" />
                     </div>
                 </div>
 
-                <div id="product-image-thumbnail-container">
+                <div className="product-image-thumbnail-container">
                     <div onClick={setLightboxImage(1)} className='thumbnail-container'>
                         <img className='product-image-thumbnail' src={Thumbnail1} alt="Shoe Thumbnail" />
                         <div className={tapePosition === 1 ? 'thumbnail-overlay-active' : 'thumbnail-overlay'}></div>
